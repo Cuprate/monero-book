@@ -17,7 +17,7 @@ POW Hash:
 the hash calculated by using the active proof of work function.
 
 Block Hash:
-the keacck hash of the block.
+the keccak hash of the block.
 
 Transaction Blob:
-the raw bytes of serialized transaction.
+the raw bytes of a serialized transaction.

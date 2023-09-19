@@ -11,4 +11,3 @@ are different to normal transactions.
 2. [Miner Transaction](./blocks/miner_tx.md)
 
 ## Block Rules
-
