@@ -3,4 +3,3 @@
 # Introduction
 
 This book aims to document the Monero protocol. Currently, work is being done to document Monero's consensus rules.
-

@@ -4,7 +4,7 @@ Monero has a hardcoded genesis block that gets added to the blockchain on the fi
 are different depending on the network.
 
 For all networks the timestamp is set to 0, the major and minor version of the block are set to `CURRENT_BLOCK_MAJOR_VERSION` and
-`CURRENT_BLOCK_MINOR_VERSION`[^version-set], These two constants are set to 1 and 0 respectively[^version-defined]. The transaction 
+`CURRENT_BLOCK_MINOR_VERSION`[^version-set], These two constants are set to 1 and 0 respectively[^version-defined]. The transaction
 field is empty, and the previous block hash is not set so that field is zeroed.
 
 ## Mainnet
@@ -38,6 +38,7 @@ The nonce is set to 10,001 and the miner transaction is set to the same as mainn
 The testnet genesis block will hash to `48ca7cd3c8de5b6a4d53d2861fbdaedca141553559f9be9520068053cda8430b`.
 
 The final block:
+
 ```
 {
     header: {
@@ -54,13 +55,14 @@ The final block:
 
 ## Stagenet
 
-The nonce is set to 10,002 and the miner transaction is set to: 
+The nonce is set to 10,002 and the miner transaction is set to:
 `013c01ff0001ffffffffffff0302df5d56da0c7d643ddd1ce61901c7bdc5fb1738bfe39fbe69c28a3a7032729c0f2101168d0c4ca86fb55a4cf6a36d31431be1c53a3bd7411bb24e8832410289fa6f3b`
 [^stagenet-params].
 
 The stagenet genesis block will hash to `76ee3cc98646292206cd3e86f74d88b4dcc1d937088645e9b0cbca84b7ce74eb`.
 
 The final block:
+
 ```
 {
     header: {

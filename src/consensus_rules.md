@@ -8,13 +8,16 @@ All references, unless otherwise stated, will be as of commit: eac1b86bb2818ac55
 ## Definitions
 
 Canonical Scalar:
-    a scalar which is fully reduced mod l.
+a scalar which is fully reduced mod l.
 
 Canonical Point:
-    a point with y coordinate fully reduced mod p and not the negative identity.
+a point with y coordinate fully reduced mod p and not the negative identity.
 
-POW hash:
-    the hash calculated by using the active proof of work function.
+POW Hash:
+the hash calculated by using the active proof of work function.
 
-Block hash:
-    the keacck hash of the block.
+Block Hash:
+the keacck hash of the block.
+
+Transaction Blob:
+the raw bytes of serialized transaction.
