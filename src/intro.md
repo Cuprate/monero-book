@@ -1,4 +1,4 @@
-![](https://www.getmonero.org/press-kit/logos/monero-logo-symbol-on-white-480.png)
+![Monero logo](https://www.getmonero.org/press-kit/logos/monero-logo-symbol-on-white-480.png)
 
 # Introduction
 
