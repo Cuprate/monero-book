@@ -42,6 +42,11 @@ The next difficulty is then calculated by[^final-diff-cal]:
 
 \\(difficulty = \frac{totalWork * targetSeconds + timeSpan -1}{timeSpan} \\)
 
+## Target Seconds
+
+For hard-fork the target seconds is 60, so one block a minute. For hard-fork 2 onwards
+block time is 120[^target-block-time].
+
 ---
 
 [^check-pow]: /src/cryptonote_basic/difficulty.cpp#L196
@@ -61,3 +66,5 @@ The next difficulty is then calculated by[^final-diff-cal]:
 [^timespan0]: /src/cryptonote_basic/difficulty.cpp#L231
 
 [^final-diff-cal]: /src/cryptonote_basic/difficulty.cpp#L236
+
+[^target-block-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L5512>

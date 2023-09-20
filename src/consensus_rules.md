@@ -13,6 +13,9 @@ a scalar which is fully reduced mod l.
 Canonical Point:
 a point with y coordinate fully reduced mod p and not the negative identity.
 
+Prime Order Point:
+a point in the prime subgroup.
+
 POW Hash:
 the hash calculated by using the active proof of work function.
 

@@ -33,6 +33,10 @@ TODO ^
 
 The transaction must have at least 1 input[^no-empty-ins].
 
+## Inputs must have decoys
+
+All inputs must have decoys[^no-empty-decoys].
+
 ### Input Type
 
 All inputs must be of type `txin_to_key`[^input-types].
@@ -54,7 +58,7 @@ no `key_offset` after the first is 0[^unique-inputs].
 
 ## Unique Key Image
 
-The key image must be unique in a transaction[^key-images-in-tx] and the whole chain [^todo-ki-chain].
+The key image must be unique in a transaction[^key-images-in-tx] and the whole chain [^key-images-in-chain].
 
 ## Torsion Free Key Image
 
@@ -103,6 +107,41 @@ Special rules[^min-decoys-special-rules]:
 From hard-fork 7 the inputs must be sorted by key image, in ascending lexicographic
 order[^sorted-kis].
 
+## The Output Must Exist
+
+The output a transaction references must exist in the chain[^output-must-exist].
+
+## The Output Must Not Be Locked
+
+The outputs unlock time must have passed[^output-time-lock].
+
+The unlock time is interpreted as a block height if less than 500000000 otherwise it's
+a timestamp.
+
+For a block height: If the `chain height` is equal to or greater than the unlock time
+then the output is allowed to be spent.
+
+For a timestamp:
+
+First you need to get the current time, before hard-fork 13 this was done by just
+getting the current time.
+
+From hard-fork 13 we use an average of the last 60 block [^deterministic-unlock-time]. If the height is less than 60 just return the current
+time.
+
+First you get the median timestamp of the last 60 we then project this timestamp to
+match approximately when the block being validated will appear, to do this we add
+61 * 60 to the timestamp.
+
+Now we get the most recent blocks timestamp and add one block worth of seconds onto that time (120).
+
+The timestamp we use is then the minimum out of the adjusted median and adjusted most
+recent timestamp.
+
+Now we add one block worth of seconds onto the timestamp([Target Seconds](./difficulty.md#target-seconds)).
+Then we check if this is greater than or equal to the unlock time, if it is we allow
+the transaction.
+
 ---
 
 [^tx-v0]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/tx_pool.cpp#L152>
@@ -116,6 +155,8 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^no-empty-ins]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1125>
 
+[^no-empty-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3473>
+
 [^input-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L844>
 
 [^output-key-canonical]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L865>
@@ -128,7 +169,7 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^key-images-in-tx]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1297>
 
-[^todo-ki-chain]: TODO
+[^key-images-in-chain]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3475>
 
 [^torsion-free-keyimage]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1324>
 
@@ -141,3 +182,9 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 [^min-decoys-special-rules]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3406-L3410>
 
 [^sorted-kis]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3435>
+
+[^output-must-exist]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3995>
+
+[^output-time-lock]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3918>
+
+[^deterministic-unlock-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4006>
