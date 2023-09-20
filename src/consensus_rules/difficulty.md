@@ -33,8 +33,6 @@ by[^calculating-lower-upper]:
 
 \\(upper = lower + 600 \\)
 
-> note if you got here then len(timestamps) will always be 720 as we handle the case where it's less than this and the list is shortened just a few steps back.
-
 We then get the timestamp at position `lower` and take this away from the timestamp at position `upper -1` to get `timeSpan`.
 If `timeSpan` is 0 we set it to 1[^timespan0].
 
