@@ -14,7 +14,11 @@ All outputs must have an amount bigger than 0[^zero-output].
 
 From hard-fork 2 version 1 transaction output amounts must be validly decomposed[^decomposed-amounts]. A valid decomposed amount is an amount contained in [this table](https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L52)
 
-## Amount Of Signatures In Ring
+## Amount Of Ring Signatures
+
+The amount of ring signatures must be the same as the number of inputs[^amt-of-ring-sigs].
+
+## Amount Of Signatures In A Ring
 
 For a ring signature at a certain index, the input at that same index must have the same amount of decoys as the ring signature has signatures[^amt-of-sigs].
 
@@ -40,11 +44,12 @@ The ring signature must be correctly formed[^ring-sig-correct].
 
 [^decomposed-amounts]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3048>
 
-[^amt-of-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3485>
-and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3999>
+[^amt-of-ring-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3485> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L266>
+
+[^amt-of-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3999> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L271-L278>
 
 [^canonical-sig]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/crypto/crypto.cpp#L735>
 
 [^valid-members]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/crypto/crypto.cpp#L738>
 
-[^ring-sig-correct]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/crypto/crypto.cpp#L711> && <https://web.archive.org/web/20160514065822/https://cryptonote.org/cns/cns002.txt>
+[^ring-sig-correct]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/crypto/crypto.cpp#L711>

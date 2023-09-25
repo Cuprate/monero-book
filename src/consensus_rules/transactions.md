@@ -41,9 +41,11 @@ All inputs must have decoys[^no-empty-decoys].
 
 All inputs must be of type `txin_to_key`[^input-types].
 
-### Output Type
+### Output Keys Canonical
 
 All output public keys must be `canonical points`[^output-key-canonical].
+
+### Output Type
 
 Up to hard-fork 15 outputs must be of type `txout_to_key`, for hard-fork 15 both `txout_to_key` and `txout_to_tagged_key` are allowed, from 16 onwards only
 `txout_to_tagged_key` is allowed[^output-types].
