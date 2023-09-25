@@ -12,7 +12,7 @@ This chapter does not include miner, coinbase, transactions as they are handled 
 
 ## Rules That Apply To All Versions
 
-## Version
+### Version
 
 Version 0 is never allowed[^tx-v0].
 
@@ -33,7 +33,7 @@ TODO ^
 
 The transaction must have at least 1 input[^no-empty-ins].
 
-## Inputs must have decoys
+### Inputs must have decoys
 
 All inputs must have decoys[^no-empty-decoys].
 
@@ -51,20 +51,22 @@ Up to hard-fork 15 outputs must be of type `txout_to_key`, for hard-fork 15 both
 For hard-fork 15 although both types are allowed a transactions outputs must all use
 the same type[^same-output-type].
 
-## Unique Inputs
+### Unique Inputs
 
 From hard-fork 6 all decoys in an input must be unique, this is done by checking that
 no `key_offset` after the first is 0[^unique-inputs].
 
-## Unique Key Image
+### Unique Key Image
 
 The key image must be unique in a transaction[^key-images-in-tx] and the whole chain [^key-images-in-chain].
 
-## Torsion Free Key Image
+### Torsion Free Key Image
 
 The key image must be a canonical prime order point[^torsion-free-keyimage].
 
-## Minimum Decoys
+### Minimum Decoys
+
+> TODO: explain this better, maybe move to it's own chapter?
 
 These rules are in effect from hard fork 2; a transactions must have a minimum amount
 of decoys, if there are enough outputs to mix with.
@@ -102,45 +104,22 @@ Special rules[^min-decoys-special-rules]:
 - For hard-fork 8 and 9 the minimum amount of decoys in a transaction must be 10
 - For hard-fork 10 to 14 the minimum amount of decoys in a transaction must be no more than 10
 
-## Sorted Inputs
+### Sorted Inputs
 
 From hard-fork 7 the inputs must be sorted by key image, in ascending lexicographic
 order[^sorted-kis].
 
-## The Output Must Exist
+### The Output Must Exist
 
 The output a transaction references must exist in the chain[^output-must-exist].
 
-## The Output Must Not Be Locked
+### The Output Must Not Be Locked
 
-The outputs unlock time must have passed[^output-time-lock].
+The outputs unlock time must have passed, see the [chapter on unlock time](./transactions/unlock_time.md).
 
-The unlock time is interpreted as a block height if less than 500000000 otherwise it's
-a timestamp.
+### 10 Block Lock
 
-For a block height: If the `chain height` is equal to or greater than the unlock time
-then the output is allowed to be spent.
-
-For a timestamp:
-
-First you need to get the current time, before hard-fork 13 this was done by just
-getting the current time.
-
-From hard-fork 13 we use an average of the last 60 block [^deterministic-unlock-time]. If the height is less than 60 just return the current
-time.
-
-First you get the median timestamp of the last 60 we then project this timestamp to
-match approximately when the block being validated will appear, to do this we add
-61 * 60 to the timestamp.
-
-Now we get the most recent blocks timestamp and add one block worth of seconds onto that time (120).
-
-The timestamp we use is then the minimum out of the adjusted median and adjusted most
-recent timestamp.
-
-Now we add one block worth of seconds onto the timestamp([Target Seconds](./difficulty.md#target-seconds)).
-Then we check if this is greater than or equal to the unlock time, if it is we allow
-the transaction.
+From hard-fork 12 all outputs used as decoys must be at least 10 blocks old[^10-block-lock].
 
 ---
 
@@ -185,6 +164,4 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^output-must-exist]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3995>
 
-[^output-time-lock]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3918>
-
-[^deterministic-unlock-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4006>
+[^10-block-lock]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3533>

@@ -44,8 +44,7 @@ The next difficulty is then calculated by[^final-diff-cal]:
 
 ## Target Seconds
 
-For hard-fork the target seconds is 60, so one block a minute. For hard-fork 2 onwards
-block time is 120[^target-block-time].
+For hard-fork v1 the target seconds is 60, so one block a minute. For hard-fork 2 onwards block time is 120[^target-block-time].
 
 ---
 
