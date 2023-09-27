@@ -25,6 +25,9 @@ the keccak hash of the block.
 Transaction Blob:
 the raw bytes of a serialized transaction.
 
+Block Blob:
+the raw bytes of a serialized block.
+
 Chain Height:
 the amount of blocks in the chain, this is different to the height of the top block as
 blocks start counting at 0.

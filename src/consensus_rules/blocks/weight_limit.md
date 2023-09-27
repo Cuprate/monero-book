@@ -1,0 +1,74 @@
+# Block Weight Limit
+
+Monero's blockchain, unlike other blockchains, has dynamic block sizes which means blocks expand to handle demand.
+However Monero does not allow unrestricted block growth, miners will face a penalty for expanding blocks and miners
+are restricted by how much the can expand a block.
+
+## Penalty Free Zone
+
+Monero sets a minimum max block weight so that miners don't get punished for expanding small blocks.
+
+For hf 1 this is 20000 bytes, for hf 2-4 this is 60000 and from 5 onwards this is 300000 bytes[^minimum-max-weight].
+
+## Blocks Weight
+
+A blocks weight is the sum of all the transactions weights in a block, including the miner transaction. The block header
+and transaction hashes are not included[^calculating-bw].
+
+## Calculating A Blocks Long Term Weight
+
+The blocks long term weight is the blocks weight adjusted with previous blocks weights.
+
+Up till hard-fork 10 the blocks long term weight is just the blocks weight[^pre-hf-10-long-weight].
+
+From hard-fork 10 onwards we first get the median long term weight over the last 100000 blocks, if this is less than
+the [penalty free zone](#penalty-free-zone) then set the median to this instead.
+
+Now from hard-fork 10 to 14 we set the `short_term_constraint` to 1.4 * the median[^hf-10-14-stc];
+
+From 15 onwards we set the `short_term_constraint` to 1.7 * the median and we adjust the block weight, only for this function,
+to `max(block_weight, median *1.7)`[^hf-15-adjustments].
+
+Now the long term weight is defined as `min(block_weight, short_term_constraint)`[^long-term-weight].
+
+## Calculating Effective Median Weight
+
+The effective median weight is used to calculate block reward and to limit block size.
+
+For any hard-fork the minimum this can be is the [penalty free zone](#penalty-free-zone)[^minimum-effective-median].
+
+Up till hard-fork 10 this is done by just getting the median **block weight** over the last 100 blocks[^pre-hf-10-effective-median], if
+there are less than 100 blocks just get the median over all the blocks.
+
+For hf 10 onwards we first get the median **long term weight** over the last 100000 blocks[^hf-10+-effective-median-step-1], if this median
+is less than the hf 5 [penalty free zone](#penalty-free-zone) set the median to that, this is the long term median.
+
+Now get the median **block weight** over the last 100 blocks, this is the short term median.
+
+Now we can calculate the effective median, for hard-forks 10 to 14 this is done by:
+
+\\(effectiveMedian = min(max(hf5PenaltyFreeZone, shortTermMedian), 50 * longTermMedian) \\)
+
+From 15 onwards this is done by:
+
+\\(effectiveMedian = min(max(longTermMedian, shortTermMedian), 50 * longTermMedian) \\)
+
+---
+
+[^minimum-max-weight]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L69>
+
+[^calculating-bw]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4289> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4408>
+
+[^pre-hf-10-long-weight]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4577>
+
+[^hf-10-14-stc]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4593>
+
+[^hf-15-adjustments]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4587>
+
+[^long-term-weight]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4595>
+
+[^minimum-effective-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4676>
+
+[^pre-hf-10-effective-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4611>
+
+[^hf-10+-effective-median-step-1]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4651>
