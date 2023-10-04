@@ -1,4 +1,4 @@
-# Block Weight Limit
+# Block Weights
 
 Monero's blockchain, unlike other blockchains, has dynamic block sizes which means blocks expand to handle demand.
 However Monero does not allow unrestricted block growth, miners will face a penalty for expanding blocks and miners
@@ -15,25 +15,38 @@ For hf 1 this is 20000 bytes, for hf 2-4 this is 60000 and from 5 onwards this i
 A blocks weight is the sum of all the transactions weights in a block, including the miner transaction. The block header
 and transaction hashes are not included[^calculating-bw].
 
-## Calculating A Blocks Long Term Weight
+## Long Term Block Weight
 
 The blocks long term weight is the blocks weight adjusted with previous blocks weights.
+
+### Calculating A Blocks Long Term Weight
 
 Up till hard-fork 10 the blocks long term weight is just the blocks weight[^pre-hf-10-long-weight].
 
 From hard-fork 10 onwards we first get the median long term weight over the last 100000 blocks, if this is less than
-the [penalty free zone](#penalty-free-zone) then set the median to this instead.
+the [penalty free zone](#penalty-free-zone) then set the median long term weight to this instead[^ltw-median].
 
-Now from hard-fork 10 to 14 we set the `short_term_constraint` to 1.4 * the median[^hf-10-14-stc];
+Now we need to set a shot term constraint and adjusted block weight, the way we do this is different for certain hard-forks.
 
-From 15 onwards we set the `short_term_constraint` to 1.7 * the median and we adjust the block weight, only for this function,
-to `max(block_weight, median *1.7)`[^hf-15-adjustments].
+From hard-fork 10 to 14[^hf-10-14-stc]:
 
-Now the long term weight is defined as `min(block_weight, short_term_constraint)`[^long-term-weight].
+\\(adjustedBlockWeight = blockWeight\\)
 
-## Calculating Effective Median Weight
+\\(shortTermConstraint = medianLongTermWeight * 1.4\\)
+
+From 15 onwards[^hf-15-adjustments]:
+
+\\(adjustedBlockWeight = max(blockWeight, frac{medianLongTermWeight}{1.7})\\)
+
+\\(shortTermConstraint = medianLongTermWeight * 1.7\\)
+
+Now the long term weight is defined as `min(adjustedBlockWeight, shortTermConstraint)`[^long-term-weight].
+
+## Effective Median Weight
 
 The effective median weight is used to calculate block reward and to limit block size.
+
+### Calculating Effective Median Weight
 
 For any hard-fork the minimum this can be is the [penalty free zone](#penalty-free-zone)[^minimum-effective-median].
 
@@ -45,7 +58,7 @@ is less than the hf 5 [penalty free zone](#penalty-free-zone) set the median to 
 
 Now get the median **block weight** over the last 100 blocks, this is the short term median.
 
-Now we can calculate the effective median, for hard-forks 10 to 14 this is done by:
+Now we can calculate the effective median, for hard-forks 10 to 14 this is done by[^effective-median]:
 
 \\(effectiveMedian = min(max(hf5PenaltyFreeZone, shortTermMedian), 50 * longTermMedian) \\)
 
@@ -61,6 +74,8 @@ From 15 onwards this is done by:
 
 [^pre-hf-10-long-weight]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4577>
 
+[^ltw-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4581>
+
 [^hf-10-14-stc]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4593>
 
 [^hf-15-adjustments]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4587>
@@ -72,3 +87,5 @@ From 15 onwards this is done by:
 [^pre-hf-10-effective-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4611>
 
 [^hf-10+-effective-median-step-1]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4651>
+
+[^effective-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4659-L4671>

@@ -7,7 +7,7 @@
   - [Hard Forks](./consensus_rules/hardforks.md)
   - [Blocks](./consensus_rules/blocks.md)
     - [Difficulty](./consensus_rules/blocks/difficulty.md)
-    - [Weight Limit](./consensus_rules/blocks/weight_limit.md)
+    - [Weights](./consensus_rules/blocks/weights.md)
     - [Miner Transaction](./consensus_rules/blocks/miner_tx.md)
   - [Transaction](./consensus_rules/transactions.md)
     - [Unlock Time](./consensus_rules/transactions/unlock_time.md)
