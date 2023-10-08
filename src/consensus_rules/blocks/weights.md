@@ -36,7 +36,7 @@ From hard-fork 10 to 14[^hf-10-14-stc]:
 
 From 15 onwards[^hf-15-adjustments]:
 
-\\(adjustedBlockWeight = max(blockWeight, frac{medianLongTermWeight}{1.7})\\)
+\\(adjustedBlockWeight = max(blockWeight, \frac{medianLongTermWeight}{1.7})\\)
 
 \\(shortTermConstraint = medianLongTermWeight * 1.7\\)
 

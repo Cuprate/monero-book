@@ -31,3 +31,12 @@ the raw bytes of a serialized block.
 Chain Height:
 the amount of blocks in the chain, this is different to the height of the top block as
 blocks start counting at 0.
+
+Ring (transactions inputs):
+the group of potential outputs that _could_ be the true spend.
+
+Decoys (transactions inputs):
+the fake outputs used to hide the true spend, the length of this is equal to one minus the `Ring` length.
+
+MixIns (transactions inputs):
+another term for `Decoys`

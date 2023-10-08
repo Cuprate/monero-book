@@ -68,43 +68,27 @@ The key image must be a canonical prime order point[^torsion-free-keyimage].
 
 ### Minimum Decoys
 
-> TODO: explain this better, maybe move to it's own chapter?
+These rules are in effect from hard fork 2.
 
-These rules are in effect from hard fork 2; a transactions must have a minimum amount
-of decoys, if there are enough outputs to mix with.
+First you get the [minimum and maximum amount of decoys used in the transaction](./transactions/decoys.md#minimum-and-maximum-decoys-used).
 
-First you get the minimum and maximum amount of decoys used in the transaction. Then
-you get the total amount of inputs that don't have enough outputs to mix with and the
-amount that does have enough to mix with.
+Then you get the [amount of mixable and un-mixable inputs](./transactions/decoys.md#mixable-and-unmixable-inputs).
 
-To find out if an input has enough outputs on the chain to mix with you simply get
-the amount of outputs from the chain with that amount, if the amount of outputs is
-less than or equal to the minimum amount of decoys then it's impossible to reach the
-minimum amount of decoys[^input-mixable].
-
-Version 2 transactions are always counted as mixable[^v2-ins-mixable].
-
-If the minimum amount of decoys is less than the current minimum then the transaction
-is only allowed if the there is at least one input which don't have enough outputs to
-mix with. The transaction is also only allowed up to one mixable input if another
-input is un-mixable[^tx-without-minimum-decoys].
-
-From hard-fork 12 all inputs must have the same number of decoys.
-
-The minimum amount of decoys:
-
-- hard-fork 1 does not follow these rules
-- hard-fork 2 to 5 is 2 decoys (3 ring members)
-- hard-fork 6 is 4
-- hard-fork 7 is 6
-- hard-fork 8 to 14 is 10
-- hard-fork 15 and up is 15
+If the minimum amount of decoys used is less than the [current minimum](./transactions/decoys.md#minimum-amount-of-decoys)
+then the transaction is only allowed if there is at least one input which is
+un-mixable. The transaction is also only allowed up to one mixable
+input if another input is un-mixable[^tx-without-minimum-decoys].
 
 Special rules[^min-decoys-special-rules]:
 
 - For hard-fork 15 both 10 and 15 decoys are allowed.
-- For hard-fork 8 and 9 the minimum amount of decoys in a transaction must be 10
-- For hard-fork 10 to 14 the minimum amount of decoys in a transaction must be no more than 10
+- From hard-fork 8 upwards the minimum amount of decoys used in a transaction must be equal to the minimum allowed.
+
+TODO ^
+
+### Equal Number Of Decoys
+
+From hard-fork 12 all inputs must have the same number of decoys[^equal-decoys].
 
 ### Sorted Inputs
 
@@ -121,7 +105,7 @@ The outputs unlock time must have passed, see the [chapter on unlock time](./tra
 
 ### 10 Block Lock
 
-From hard-fork 12 all outputs used as decoys must be at least 10 blocks old[^10-block-lock].
+From hard-fork 12 all ring members must be at least 10 blocks old[^10-block-lock].
 
 ---
 
@@ -161,6 +145,8 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 [^tx-without-minimum-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3392>
 
 [^min-decoys-special-rules]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3406-L3410>
+
+[^equal-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3378>
 
 [^sorted-kis]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3435>
 
