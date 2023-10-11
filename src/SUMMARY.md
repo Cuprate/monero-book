@@ -8,6 +8,7 @@
   - [Blocks](./consensus_rules/blocks.md)
     - [Difficulty](./consensus_rules/blocks/difficulty.md)
     - [Weights](./consensus_rules/blocks/weights.md)
+    - [Block Reward](./consensus_rules/blocks/reward.md)
     - [Miner Transaction](./consensus_rules/blocks/miner_tx.md)
   - [Transaction](./consensus_rules/transactions.md)
     - [Unlock Time](./consensus_rules/transactions/unlock_time.md)
