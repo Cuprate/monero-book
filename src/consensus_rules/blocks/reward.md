@@ -6,26 +6,28 @@ The block reward is the amount paid out to a miner for mining a block.
 
 The base block reward is the reward before factoring in the potential penalty for expanding blocks.
 
-To calculate the  base block reward you first need the total amount of coins already generated, then define:
+To calculate the base block reward you first need the total amount of coins already generated, then define:
 
-\\(moneySupply = 2^{64} -1 \\) [^money-supply]
+[^money-supply] \\(moneySupply = 2^{64} -1 \\)
 
-\\(emissionSpeedFactor = 20 - (targetMinutes - 1) \\) [^emission-speed-factor]
+[^emission-speed-factor] \\(emissionSpeedFactor = 20 - (targetMinutes - 1) \\)
 
 where `targetMinutes` is the [target block time](./difficulty.md#target-seconds) in minutes.
 
 The `baseReward` is then calculated by:
 
-\\(baseReward = (moneySupply - alreadyGeneratedCoins) >> emissionSpeedFactor \\) [^base-reward]
+[^base-reward] \\(baseReward = (moneySupply - alreadyGeneratedCoins) >> emissionSpeedFactor \\)
 
 If `baseReward` falls below the final subsidy (0.3 XMR/ minute) them set the `baseReward` to that instead [^final-base-reward].
 
 ## Calculating Block Reward
 
-First calculate the [base block reward](#calculating-base-block-reward)
+First calculate the [base block reward](#calculating-base-block-reward).
 
-If the current block weight is not more than the effective median weight then the block reward is the base
-reward.
+Now we need a median value of weight over the previous blocks, from v12 onwards this value is the [effective median](./weights.md#effective-median-weight), before
+v12 this is done by getting the median [block weight](./weights.md#block-weights) over the last 100 blocks[^getting-median].
+
+If the current block weight is not more than the median weight then the block reward is the base reward.
 
 Otherwise the block reward is:[^block-reward]
 
@@ -40,5 +42,7 @@ Otherwise the block reward is:[^block-reward]
 [^base-reward]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L89>
 
 [^final-base-reward]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L90-L93>
+
+[^getting-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1418-L1427>
 
 [^block-reward]: <https://web.getmonero.org/library/Zero-to-Monero-2-0-0.pdf#subsection.7.3.3> && <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L111-L127>

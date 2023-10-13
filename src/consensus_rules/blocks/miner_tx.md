@@ -1,0 +1,78 @@
+# Miner Transaction Rules
+
+Miner transactions are handled differently to normal transactions, see [here](../transactions.md) for the rules on normal transactions.
+
+## Version
+
+The transactions version must be either 1 or 2[^versions-allowed].
+
+The version must be bigger than 1 or the current hard-fork must be less than 12[^weird-version-rules].
+
+## Input
+
+The transaction must only have one input and it must be of type `txin_gen`[^input-type].
+
+The height specified in the input must be the actual block height[^input-height].
+
+## RingCT Type
+
+From hard-fork 12 version 2 miner transactions must have a ringCT type of `Null`[^null-ringct].
+
+## Unlock Time
+
+The unlock time must be the current height + 60[^unlock-time].
+
+## Output Amounts
+
+The output, when summed, must not overflow[^outputs-overflow].
+
+For hard-fork 3 the output amount must be a valid decomposed amount[^decomposed-amount], which means the amount must be
+in [this](https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/cryptonote_format_utils.cpp#L52) table.
+
+## Total Outputs
+
+The [reward from the block](./reward.md#calculating-block-reward) + the total fees must be equal to or less than than the summed output amount[^total-output-amount].
+
+For hard-fork 1 and 12 onwards the summed output amount must equal the reward + fees[^exact-output-amount].
+
+## Output Type
+
+The output type allowed depends on the hard-fork[^output-types]:
+
+| hard-fork  | output type                          |
+| ---------- | ------------------------------------ |
+| 1 to 14    | txout_to_key                         |
+| 15         | txout_to_key and txout_to_tagged_key |
+| 16 onwards | txout_to_tagged_key                  |
+
+> For hard-fork 15 both are allowed but the transactions outputs must all be the same type.
+
+## Zero Amount V1 Output
+
+Monero does **not** ban zero amount V1 outputs on miner transactions but the database throws an error if a 0 amount output doesn't have a commitment[^zero-output].
+
+---
+
+[^versions-allowed]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/cryptonote_basic.h#L185>
+
+[^weird-version-rules]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1371>
+
+[^input-type]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1369-L1370>
+
+[^input-height]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1379>
+
+[^null-ringct]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1374>
+
+[^unlock-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1385>
+
+[^outputs-overflow]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1388>
+
+[^output-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L960>
+
+[^decomposed-amount]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1409>
+
+[^total-output-amount]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1434>
+
+[^exact-output-amount]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1440-L1447>
+
+[^zero-output]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/blockchain_db/lmdb/db_lmdb.cpp#L1069>
