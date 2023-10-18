@@ -26,7 +26,7 @@ Up till hard-fork 10 the blocks long term weight is just the blocks weight[^pre-
 From hard-fork 10 onwards we first get the median long term weight over the last 100000 blocks, if this is less than
 the [penalty free zone](#penalty-free-zone) then set the median long term weight to this instead[^ltw-median].
 
-Now we need to set a shot term constraint and adjusted block weight, the way we do this is different for certain hard-forks.
+Now we need to set a shot term constraint and adjusted block weight, the way we do this is different depending on the hard-fork.
 
 From hard-fork 10 to 14[^hf-10-14-stc]:
 

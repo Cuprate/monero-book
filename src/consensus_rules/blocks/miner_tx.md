@@ -1,41 +1,47 @@
 # Miner Transaction Rules
 
+## Introduction
+
 Miner transactions are handled differently to normal transactions, see [here](../transactions.md) for the rules on normal transactions.
 
-## Version
+## Rules
+
+### Version
 
 The transactions version must be either 1 or 2[^versions-allowed].
 
 The version must be bigger than 1 or the current hard-fork must be less than 12[^weird-version-rules].
 
-## Input
+### Input
 
 The transaction must only have one input and it must be of type `txin_gen`[^input-type].
 
+### Height
+
 The height specified in the input must be the actual block height[^input-height].
 
-## RingCT Type
+### RingCT Type
 
 From hard-fork 12 version 2 miner transactions must have a ringCT type of `Null`[^null-ringct].
 
-## Unlock Time
+### Unlock Time
 
 The unlock time must be the current height + 60[^unlock-time].
 
-## Output Amounts
+### Output Amounts
 
 The output, when summed, must not overflow[^outputs-overflow].
 
-For hard-fork 3 the output amount must be a valid decomposed amount[^decomposed-amount], which means the amount must be
+For _only_ hard-fork 3 the output amount must be a valid decomposed amount[^decomposed-amount], which means the amount must be
 in [this](https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/cryptonote_format_utils.cpp#L52) table.
 
-## Total Outputs
+### Total Outputs
 
-The [reward from the block](./reward.md#calculating-block-reward) + the total fees must be equal to or less than than the summed output amount[^total-output-amount].
+The [reward from the block](./reward.md#calculating-block-reward) + the total fees must not be more than the summed output amount[^total-output-amount].
 
-For hard-fork 1 and 12 onwards the summed output amount must equal the reward + fees[^exact-output-amount].
+For hard-fork 1 and from 12 onwards the summed output amount must equal the reward + fees[^exact-output-amount].
 
-## Output Type
+### Output Type
 
 The output type allowed depends on the hard-fork[^output-types]:
 
@@ -47,9 +53,23 @@ The output type allowed depends on the hard-fork[^output-types]:
 
 > For hard-fork 15 both are allowed but the transactions outputs must all be the same type.
 
-## Zero Amount V1 Output
+<div class="hidden">
+
+### Zero Amount V1 Output
 
 Monero does **not** ban zero amount V1 outputs on miner transactions but the database throws an error if a 0 amount output doesn't have a commitment[^zero-output].
+
+</div>
+
+### No Ring Signatures
+
+Miner Txs should not have any ring signatures[^ring-sigs].
+
+### V2 Output Pool
+
+When adding version 2 miner transactions to the blockchain put the outputs into the 0 amount pool and create dummy commitments of:[^v2-output]
+
+\\(commitment = G + amount * H \\)
 
 ---
 
@@ -67,12 +87,16 @@ Monero does **not** ban zero amount V1 outputs on miner transactions but the dat
 
 [^outputs-overflow]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1388>
 
-[^output-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L960>
-
 [^decomposed-amount]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1409>
 
 [^total-output-amount]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1434>
 
 [^exact-output-amount]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1440-L1447>
 
+[^output-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L960>
+
 [^zero-output]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/blockchain_db/lmdb/db_lmdb.cpp#L1069>
+
+[^ring-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L265-L285>
+
+[^v2-output]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/blockchain_db/blockchain_db.cpp#L234-L241>

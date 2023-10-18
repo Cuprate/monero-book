@@ -25,7 +25,7 @@ The amount of transactions in a block (including miner transaction) must be less
 
 ### No Duplicate Transactions
 
-There must be no duplicate transactions in the block[^no-duplicate-txs].
+There must be no duplicate transactions in the block or the blockchain[^no-duplicate-txs].
 
 ### Key Images
 
@@ -74,7 +74,7 @@ the median timestamp over the last 60 blocks[^timestamp-lower-limit], if there a
 
 [^max-amount-of-txs]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/crypto/tree-hash.c#L55>
 
-[^no-duplicate-txs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L5267>
+[^no-duplicate-txs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L5267> && <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/blockchain.cpp#L4319>
 
 [^no-duplicate-ki]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L5281>
 

@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](./intro.md)
+[Introduction](./INTRO.md)
 
 - [Consensus Rules](./consensus_rules.md)
   - [The Genesis Block](./consensus_rules/genesis_block.md)
@@ -9,8 +9,8 @@
     - [Difficulty](./consensus_rules/blocks/difficulty.md)
     - [Weights](./consensus_rules/blocks/weights.md)
     - [Block Reward](./consensus_rules/blocks/reward.md)
-    - [Miner Transaction](./consensus_rules/blocks/miner_tx.md)
-  - [Transaction](./consensus_rules/transactions.md)
+    - [Miner Transactions](./consensus_rules/blocks/miner_tx.md)
+  - [Transactions](./consensus_rules/transactions.md)
     - [Unlock Time](./consensus_rules/transactions/unlock_time.md)
     - [Decoys](./consensus_rules/transactions/decoys.md)
     - [Version 1](./consensus_rules/transactions/pre_rct.md)

@@ -61,20 +61,20 @@ TODO
 
 ---
 
-[^hardfork-class]: /src/cryptonote_basic/hardfork.h
+[^hardfork-class]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/hardfork.h>
 
-[^minor-v-0]: /src/cryptonote_basic/hardfork.cpp#L47
+[^minor-v-0]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/hardfork.cpp#L47>
 
-[^minor-v-too-large]: /src/cryptonote_basic/hardfork.cpp#L99
+[^minor-v-too-large]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/hardfork.cpp#L99>
 
-[^window-size]: /src/cryptonote_basic/hardfork.h#L51
+[^window-size]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/hardfork.h#L51>
 
-[^accepting-hfs]: /src/cryptonote_basic/hardfork.cpp#L311
+[^accepting-hfs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/hardfork.cpp#L311>
 
-[^mainnet-hfs]: /src/hardforks/hardforks.cpp#L34
+[^mainnet-hfs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/hardforks/hardforks.cpp#L34>
 
 [^v1-at-0]: Monero C++ sets this to 1 even though the [genesis block](genesis_block.md) has a major version of 1.
 
-[^testnet-hfs]: 
+[^testnet-hfs]: TODO
 
-[^stagenet-hfs]: 
+[^stagenet-hfs]: TODO

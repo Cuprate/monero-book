@@ -2,7 +2,7 @@
 
 ## Fee
 
-Transactions must have a higher amount in than out[^more-in-than-out].
+Transactions must have a higher amount in than out[^more-in-than-out], the fee is defined as the inputs - outputs.
 
 ## Inputs And Outputs Must Not Overflow
 
@@ -20,7 +20,7 @@ The amount of ring signatures must be the same as the number of inputs[^amt-of-r
 
 ## Amount Of Signatures In A Ring
 
-For a ring signature at a certain index, the input at that same index must have the same amount of decoys as the ring signature has signatures[^amt-of-sigs].
+For a ring signature at a certain index, the input at that same index must have the same amount of ring members as the ring signature has signatures[^amt-of-sigs].
 
 ## Signatures Must Be Canonical
 
@@ -46,7 +46,7 @@ The ring signature must be correctly formed[^ring-sig-correct].
 
 [^amt-of-ring-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3485> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L266>
 
-[^amt-of-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3999> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L271-L278>
+[^amt-of-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3999> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L271-L282>
 
 [^canonical-sig]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/crypto/crypto.cpp#L735>
 

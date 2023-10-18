@@ -17,7 +17,7 @@ The mainnet genesis block will hash to: `418015bb9ae982a1975da7d79277c2705727a56
 
 The final block:
 
-```
+```json
 {
     header: {
         major_version: 1,
@@ -39,7 +39,7 @@ The testnet genesis block will hash to `48ca7cd3c8de5b6a4d53d2861fbdaedca1415535
 
 The final block:
 
-```
+```json
 {
     header: {
         major_version: 1,
@@ -63,7 +63,7 @@ The stagenet genesis block will hash to `76ee3cc98646292206cd3e86f74d88b4dcc1d93
 
 The final block:
 
-```
+```json
 {
     header: {
         major_version: 1,
@@ -79,14 +79,14 @@ The final block:
 
 ---
 
-[^first-run]: /src/cryptonote_core/blockchain.cpp#L340
+[^first-run]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L340>
 
-[^version-set]: /src/cryptonote_core/cryptonote_tx_utils.cpp#L663-L665
+[^version-set]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_tx_utils.cpp#L663-L665>
 
-[^version-defined]: /src/cryptonote_config.h#L45-L46
+[^version-defined]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_config.h#L45-L46>
 
-[^mainnet-params]: /src/cryptonote_config.h#L231-L232
+[^mainnet-params]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_config.h#L231-L232>
 
-[^testnet-params]: /src/cryptonote_config.h#L272-L273
+[^testnet-params]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_config.h#L272-L273>
 
-[^stagenet-params]: /src/cryptonote_config.h#L287-L288
+[^stagenet-params]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_config.h#L287-L288>

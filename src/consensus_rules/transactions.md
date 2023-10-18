@@ -25,9 +25,7 @@ is 0 the minimum is 2 otherwise 1[^min-tx-version].
 
 The size of the `transaction blob` must not be bigger than 1 million bytes[^tx-size-limit].
 
-From v8 the transactions weight must not be bigger than the transaction weight limit.
-
-TODO ^
+From v8 the transactions _weight_ must not be bigger than half of the [block penalty free zone](./blocks/weights.md#penalty-free-zone) minus 600[^tx-weight_limit].
 
 ### No Empty Inputs
 
@@ -47,11 +45,15 @@ All output public keys must be `canonical points`[^output-key-canonical].
 
 ### Output Type
 
-Up to hard-fork 15 outputs must be of type `txout_to_key`, for hard-fork 15 both `txout_to_key` and `txout_to_tagged_key` are allowed, from 16 onwards only
-`txout_to_tagged_key` is allowed[^output-types].
+The output type allowed depends on the hard-fork[^output-types]:
 
-For hard-fork 15 although both types are allowed a transactions outputs must all use
-the same type[^same-output-type].
+| hard-fork  | output type                          |
+| ---------- | ------------------------------------ |
+| 1 to 14    | txout_to_key                         |
+| 15         | txout_to_key and txout_to_tagged_key |
+| 16 onwards | txout_to_tagged_key                  |
+
+> For hard-fork 15 both are allowed but the transactions outputs must all be the same type[^same-output-type].
 
 ### Unique Inputs
 
@@ -70,7 +72,7 @@ The key image must be a canonical prime order point[^torsion-free-keyimage].
 
 These rules are in effect from hard fork 2.
 
-First you get the [minimum and maximum amount of decoys used in the transaction](./transactions/decoys.md#minimum-and-maximum-decoys-used).
+First you get the [minimum and maximum number of decoys used in the transaction](./transactions/decoys.md#minimum-and-maximum-decoys-used).
 
 Then you get the [amount of mixable and un-mixable inputs](./transactions/decoys.md#mixable-and-unmixable-inputs).
 
@@ -84,16 +86,13 @@ Special rules[^min-decoys-special-rules]:
 - For hard-fork 15 both 10 and 15 decoys are allowed.
 - From hard-fork 8 upwards the minimum amount of decoys used in a transaction must be equal to the minimum allowed.
 
-TODO ^
-
 ### Equal Number Of Decoys
 
 From hard-fork 12 all inputs must have the same number of decoys[^equal-decoys].
 
 ### Sorted Inputs
 
-From hard-fork 7 the inputs must be sorted by key image, in ascending lexicographic
-order[^sorted-kis].
+From hard-fork 7 the inputs must be sorted by key image, in ascending lexicographic order[^sorted-kis].
 
 ### The Output Must Exist
 
@@ -105,7 +104,7 @@ The outputs unlock time must have passed, see the [chapter on unlock time](./tra
 
 ### 10 Block Lock
 
-From hard-fork 12 all ring members must be at least 10 blocks old[^10-block-lock].
+From hard-fork 12 all ring members must be at least 10 blocks old[^minimum-out-age].
 
 ---
 
@@ -117,6 +116,8 @@ From hard-fork 12 all ring members must be at least 10 blocks old[^10-block-lock
 
 [^tx-size-limit]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L791>
 and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L78>
+
+[^tx-weight_limit]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/tx_pool.cpp#L117> && <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/tx_pool.cpp#L221>
 
 [^no-empty-ins]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1125>
 
@@ -138,10 +139,6 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^torsion-free-keyimage]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1324>
 
-[^input-mixable]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3361>
-
-[^v2-ins-mixable]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3352>
-
 [^tx-without-minimum-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3392>
 
 [^min-decoys-special-rules]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3406-L3410>
@@ -152,4 +149,4 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^output-must-exist]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3995>
 
-[^10-block-lock]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3533>
+[^minimum-out-age]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3533>

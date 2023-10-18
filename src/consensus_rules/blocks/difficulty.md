@@ -15,7 +15,7 @@ does not overflow the hash is valid[^check-pow]:
 To calculate difficulty, Monero keeps a window of that last 735[^diff-blocks-count] timestamps and cumulative difficulties,
 if there are not enough blocks, then you just use as many as possible.
 
-> note the genesis block is skipped for these calculations[^skip-genesis] so should not be included in the timestamp/ CD list.
+> The genesis block is skipped for these calculations[^skip-genesis] so should not be included in the timestamp/ CD list.
 
 If the amount of blocks is less than or equal to 1 then 1 is returned as the difficulty[^amt-blocks-1].
 
@@ -25,7 +25,7 @@ the chain.
 The timestamps are then sorted, in ascending order. We now remove the extreme timestamp values, Monero sets the amount to
 remove at each tail 60[^amt-of-extremes] so the total to remove is 120.
 
-If the number of timestamps is less than or equal to the amount of blocks we are accounting for (600 aka 720 - 2 * 60) then the lower
+If the number of timestamps is less than or equal to the amount of blocks we are accounting for (600 or 720 - 2 * 60) then the lower
 is set to 0 and the upper is set to the length of timestamps. Otherwise, if we have enough timestamps, the lower and upper is calculated
 by[^calculating-lower-upper]:
 
@@ -48,22 +48,22 @@ For hard-fork v1 the target seconds is 60, so one block a minute. For hard-fork 
 
 ---
 
-[^check-pow]: /src/cryptonote_basic/difficulty.cpp#L196
+[^check-pow]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/difficulty.cpp#L196>
 
-[^diff-blocks-count]: /src/cryptonote_config.h#L84
+[^diff-blocks-count]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_config.h#L84>
 
-[^skip-genesis]: /src/cryptonote_core/blockchain.cpp#L850
+[^skip-genesis]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/blockchain.cpp#L849C40-L849C65>
 
-[^amt-blocks-1]: /src/cryptonote_basic/difficulty.cpp#L214
+[^amt-blocks-1]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/difficulty.cpp#L214>
 
-[^diff-window]: /src/cryptonote_config.h#L81 && /src/cryptonote_basic/difficulty.cpp#L205
+[^diff-window]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_config.h#L81> && <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/difficulty.cpp#L205>
 
-[^amt-of-extremes]: /src/cryptonote_config.h#L83
+[^amt-of-extremes]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_config.h#L83>
 
-[^calculating-lower-upper]: /src/cryptonote_basic/difficulty.cpp#L222
+[^calculating-lower-upper]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/difficulty.cpp#L222>
 
-[^timespan0]: /src/cryptonote_basic/difficulty.cpp#L231
+[^timespan0]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/difficulty.cpp#L231>
 
-[^final-diff-cal]: /src/cryptonote_basic/difficulty.cpp#L236
+[^final-diff-cal]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_basic/difficulty.cpp#L236>
 
 [^target-block-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L5512>

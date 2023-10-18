@@ -7,7 +7,7 @@ the size of the ring to 16 (with some exceptions) but this was not always the ca
 
 This is the number of decoys an input must at least have.
 
-> There are exceptions to this being the minimum decoy size for all transactions.
+> There are exceptions to this being the minimum decoy size for all transactions. See [here](../transactions.md#minimum-decoys).
 
 | Hard-Fork | Minimum Decoys[^min-decoys] |
 | --------- | --------------------------- |
