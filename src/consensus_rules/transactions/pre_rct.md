@@ -1,36 +1,42 @@
 # Transaction Version 1 Rules
 
-## Fee
+## Intro
+
+These rules apply only to version 1, pre-ringCT, transactions.
+
+## Rules
+
+### Fee
 
 Transactions must have a higher amount in than out[^more-in-than-out], the fee is defined as the inputs - outputs.
 
-## Inputs And Outputs Must Not Overflow
+### Inputs And Outputs Must Not Overflow
 
 The inputs when summed must not overflow a u64 and the outputs when summed must no either[^amount-overflow].
 
-## Output Amount
+### Output Amount
 
 All outputs must have an amount bigger than 0[^zero-output].
 
 From hard-fork 2 version 1 transaction output amounts must be validly decomposed[^decomposed-amounts]. A valid decomposed amount is an amount contained in [this table](https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L52)
 
-## Amount Of Ring Signatures
+### Amount Of Ring Signatures
 
 The amount of ring signatures must be the same as the number of inputs[^amt-of-ring-sigs].
 
-## Amount Of Signatures In A Ring
+### Amount Of Signatures In A Ring
 
 For a ring signature at a certain index, the input at that same index must have the same amount of ring members as the ring signature has signatures[^amt-of-sigs].
 
-## Signatures Must Be Canonical
+### Signatures Must Be Canonical
 
 Every signatures c and r value must be `canonical scalars`[^canonical-sig].
 
-## Ring Members Must Be Valid Points
+### Ring Members Must Be Valid Points
 
 All outputs used as ring members must be valid canonical points[^valid-members].
 
-## The Ring Signature Must Be Valid
+### The Ring Signature Must Be Valid
 
 The ring signature must be correctly formed[^ring-sig-correct].
 

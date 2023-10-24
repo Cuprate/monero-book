@@ -18,8 +18,9 @@ Version 0 is never allowed[^tx-v0].
 
 The max transaction version is 1 up to hard fork 4 then the max is 2[^max-tx-version].
 
-The minimum tx version is 1 up till version 6 then if the [number of mixable inputs](#minimum-decoys)
-is 0 the minimum is 2 otherwise 1[^min-tx-version].
+The minimum tx version is 1 up till version 6 then if the [number of un-mixable inputs](#minimum-decoys)
+is 0 the minimum is 2 otherwise 1[^min-tx-version] so a version 1 transaction is allowed if the amount
+it's spending does not have enough outputs with the same amount to mix with.
 
 ### Transaction Size
 
@@ -31,9 +32,9 @@ From v8 the transactions _weight_ must not be bigger than half of the [block pen
 
 The transaction must have at least 1 input[^no-empty-ins].
 
-### Inputs must have decoys
+### No Empty decoys
 
-All inputs must have decoys[^no-empty-decoys].
+All inputs must have decoys[^empty-decoys].
 
 ### Input Type
 
@@ -42,6 +43,9 @@ All inputs must be of type `txin_to_key`[^input-types].
 ### Output Keys Canonical
 
 All output public keys must be `canonical points`[^output-key-canonical].
+
+> This was added as a rule in hard-fork 4 but that check is redundant as it was done before that.
+> So how did invalid keys get on the chain? [miner txs](./blocks/miner_tx.md).
 
 ### Output Type
 
@@ -55,10 +59,10 @@ The output type allowed depends on the hard-fork[^output-types]:
 
 > For hard-fork 15 both are allowed but the transactions outputs must all be the same type[^same-output-type].
 
-### Unique Inputs
+### Unique Ring Members
 
-From hard-fork 6 all decoys in an input must be unique, this is done by checking that
-no `key_offset` after the first is 0[^unique-inputs].
+From hard-fork 6 all ring members in an input must be unique, this is done by checking that
+no `key_offset` after the first is 0[^unique-ring].
 
 ### Unique Key Image
 
@@ -121,7 +125,7 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^no-empty-ins]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1125>
 
-[^no-empty-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3473>
+[^empty-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3473>
 
 [^input-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L844>
 
@@ -131,7 +135,7 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 
 [^same-output-type]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L984>
 
-[^unique-inputs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1309>
+[^unique-ring]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1309>
 
 [^key-images-in-tx]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1297>
 

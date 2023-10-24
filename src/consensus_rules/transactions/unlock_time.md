@@ -45,7 +45,7 @@ recent timestamp[^minimum-timestamp].
 
 ### Checking Timestamp Has Passed
 
-Now with out timestamp we add the [target seconds](../blocks/difficulty.md#target-seconds)
+Now with our timestamp we add the [target seconds](../blocks/difficulty.md#target-seconds)
 per block and check if this is more than or equal to the unlock
 time[^checking-timestamp].
 

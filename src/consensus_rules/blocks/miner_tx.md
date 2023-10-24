@@ -16,8 +16,6 @@ The version must be bigger than 1 or the current hard-fork must be less than 12[
 
 The transaction must only have one input and it must be of type `txin_gen`[^input-type].
 
-### Height
-
 The height specified in the input must be the actual block height[^input-height].
 
 ### RingCT Type
@@ -26,7 +24,7 @@ From hard-fork 12 version 2 miner transactions must have a ringCT type of `Null`
 
 ### Unlock Time
 
-The unlock time must be the current height + 60[^unlock-time].
+The unlock time must be the current height + 60[^miner-unlock-time].
 
 ### Output Amounts
 
@@ -39,7 +37,8 @@ in [this](https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f
 
 The [reward from the block](./reward.md#calculating-block-reward) + the total fees must not be more than the summed output amount[^total-output-amount].
 
-For hard-fork 1 and from 12 onwards the summed output amount must equal the reward + fees[^exact-output-amount].
+For hard-fork 1 and from 12 onwards the summed output amount must equal the reward + fees[^exact-output-amount] this means from 2 till 11 miners can collect
+less if they want less dust.
 
 ### Output Type
 
@@ -61,10 +60,6 @@ Monero does **not** ban zero amount V1 outputs on miner transactions but the dat
 
 </div>
 
-### No Ring Signatures
-
-Miner Txs should not have any ring signatures[^ring-sigs].
-
 ### V2 Output Pool
 
 When adding version 2 miner transactions to the blockchain put the outputs into the 0 amount pool and create dummy commitments of:[^v2-output]
@@ -83,7 +78,7 @@ When adding version 2 miner transactions to the blockchain put the outputs into 
 
 [^null-ringct]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1374>
 
-[^unlock-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1385>
+[^miner-unlock-time]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1385>
 
 [^outputs-overflow]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1388>
 
@@ -96,7 +91,5 @@ When adding version 2 miner transactions to the blockchain put the outputs into 
 [^output-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L960>
 
 [^zero-output]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/blockchain_db/lmdb/db_lmdb.cpp#L1069>
-
-[^ring-sigs]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic.h#L265-L285>
 
 [^v2-output]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/blockchain_db/blockchain_db.cpp#L234-L241>

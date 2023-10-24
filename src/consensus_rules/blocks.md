@@ -16,8 +16,8 @@ are different to normal transactions.
 
 The `block blob` must not be bigger than (2 * the [effective median weight](./blocks/weights.md#effective-median-weight) + 100)[^block-size-check].
 
-From hard-fork 1 to 11 the [block weight](./blocks/weights.md#block-weights) must not be more than 2 * the median weight over the last 100 blocks,
-from hard-fork 12 onwards instead of the median weight use the [effective median weight](./blocks/weights.md#effective-median-weight)[^block-weight-limit].
+The [block weight](./blocks/weights.md#block-weights) must not be more than 2 *
+[the median weight for coinbase checks](./blocks/weights.md#median-weight-for-coinbase-checks) [^block-weight-limit].
 
 ### Amount Of Transactions
 
@@ -37,7 +37,7 @@ The blocks `prev_id` must equal the `block hash` of the last block[^prev_id].
 
 ### POW Function
 
-The proof of work function used depends on the hard-fork[^pow-function]:
+The proof of work function used depends on the hard-fork[^pow-func]:
 
 | hard-fork  | POW function   |
 | ---------- | -------------- |
@@ -80,7 +80,7 @@ the median timestamp over the last 60 blocks[^timestamp-lower-limit], if there a
 
 [^prev_id]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4150>
 
-[^pow-function]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/cryptonote_tx_utils.cpp#L689-L704>
+[^pow-func]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/cryptonote_tx_utils.cpp#L689-L704>
 
 [^202612-pow-hash]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/cryptonote_tx_utils.cpp#L683>
 

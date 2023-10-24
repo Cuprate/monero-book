@@ -24,8 +24,7 @@ If `baseReward` falls below the final subsidy (0.3 XMR/ minute) them set the `ba
 
 First calculate the [base block reward](#calculating-base-block-reward).
 
-Now we need a median value of weight over the previous blocks, from v12 onwards this value is the [effective median](./weights.md#effective-median-weight), before
-v12 this is done by getting the median [block weight](./weights.md#block-weights) over the last 100 blocks[^getting-median].
+Now we need to get the [median weight for block rewards](weights.md#median-weight-for-coinbase-checks)
 
 If the current block weight is not more than the median weight then the block reward is the base reward.
 
@@ -42,7 +41,5 @@ Otherwise the block reward is:[^block-reward]
 [^base-reward]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L89>
 
 [^final-base-reward]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L90-L93>
-
-[^getting-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1418-L1427>
 
 [^block-reward]: <https://web.getmonero.org/library/Zero-to-Monero-2-0-0.pdf#subsection.7.3.3> && <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L111-L127>

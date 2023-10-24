@@ -4,6 +4,14 @@ Monero's blockchain, unlike other blockchains, has dynamic block sizes which mea
 However Monero does not allow unrestricted block growth, miners will face a penalty for expanding blocks and miners
 are restricted by how much the can expand a block.
 
+## Index
+
+  1. [Penalty Free Zone](weights.md#penalty-free-zone)
+  2. [Blocks Weight](#blocks-weight)
+  3. [Long Term Block Weight](#long-term-block-weight)
+  4. [Effective Median Weight](#effective-median-weight)
+  5. [Median Weight For Coinbase Checks](#median-weight-for-coinbase-checks)
+
 ## Penalty Free Zone
 
 Monero sets a minimum max block weight so that miners don't get punished for expanding small blocks.
@@ -66,6 +74,16 @@ From 15 onwards this is done by:
 
 \\(effectiveMedian = min(max(longTermMedian, shortTermMedian), 50 * longTermMedian) \\)
 
+## Median Weight For Coinbase Checks
+
+When checking coinbase transactions and block weight Monero uses yet another median weight :).
+
+### Calculating Median Weight For Coinbase Checks
+
+Before hf 12 this is the median block weight over the last 100 blocks[^median-weight-coinbase-before-v12].
+
+From hf 12 this is the [effective median weight](#effective-median-weight)[^median-weight-coinbase-from-v12]
+
 ---
 
 [^minimum-max-weight]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_basic_impl.cpp#L69>
@@ -89,3 +107,7 @@ From 15 onwards this is done by:
 [^hf-10+-effective-median-step-1]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4651>
 
 [^effective-median]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L4659-L4671>
+
+[^median-weight-coinbase-before-v12]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1425-L1427>
+
+[^median-weight-coinbase-from-v12]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L1421>
