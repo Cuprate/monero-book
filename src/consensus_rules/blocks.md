@@ -17,7 +17,7 @@ are different to normal transactions.
 The `block blob` must not be bigger than (2 * the [effective median weight](./blocks/weights.md#effective-median-weight) + 100)[^block-size-check].
 
 The [block weight](./blocks/weights.md#block-weights) must not be more than 2 *
-[the median weight for coinbase checks](./blocks/weights.md#median-weight-for-coinbase-checks) [^block-weight-limit].
+[the median weight for coinbase checks](./blocks/weights.md#median-weight-for-coinbase-checks)[^block-weight-limit].
 
 ### Amount Of Transactions
 

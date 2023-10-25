@@ -6,11 +6,11 @@ are restricted by how much the can expand a block.
 
 ## Index
 
-  1. [Penalty Free Zone](weights.md#penalty-free-zone)
-  2. [Blocks Weight](#blocks-weight)
-  3. [Long Term Block Weight](#long-term-block-weight)
-  4. [Effective Median Weight](#effective-median-weight)
-  5. [Median Weight For Coinbase Checks](#median-weight-for-coinbase-checks)
+1. [Penalty Free Zone](weights.md#penalty-free-zone)
+2. [Blocks Weight](#blocks-weight)
+3. [Long Term Block Weight](#long-term-block-weight)
+4. [Effective Median Weight](#effective-median-weight)
+5. [Median Weight For Coinbase Checks](#median-weight-for-coinbase-checks)
 
 ## Penalty Free Zone
 

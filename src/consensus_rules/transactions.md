@@ -76,14 +76,16 @@ The key image must be a canonical prime order point[^torsion-free-keyimage].
 
 These rules are in effect from hard fork 2.
 
-First you get the [minimum and maximum number of decoys used in the transaction](./transactions/decoys.md#minimum-and-maximum-decoys-used).
+First you get the [minimum number of decoys used in the transaction](./transactions/decoys.md#minimum-and-maximum-decoys-used).
 
 Then you get the [amount of mixable and un-mixable inputs](./transactions/decoys.md#mixable-and-unmixable-inputs).
 
-If the minimum amount of decoys used is less than the [current minimum](./transactions/decoys.md#minimum-amount-of-decoys)
-then the transaction is only allowed if there is at least one input which is
-un-mixable. The transaction is also only allowed up to one mixable
-input if another input is un-mixable[^tx-without-minimum-decoys].
+Now get the [default minimum decoys allowed for the current hard-fork](./transactions/decoys.md#default-minimum-decoys).
+
+If the minimum amount of decoys used in the transaction is less than the default minimum decoys allowed then the transaction is only
+allowed if there is at least one input which is un-mixable[^tx-without-minimum-decoys].
+
+If there is an un-mixable then the transaction is not allowed to have more than 1 mixable input as well.
 
 Special rules[^min-decoys-special-rules]:
 

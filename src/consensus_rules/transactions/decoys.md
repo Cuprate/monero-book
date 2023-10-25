@@ -3,7 +3,7 @@
 Every non-miner transaction input must specify a `ring` of past outputs of which one is the true spend. Currently Monero restricts
 the size of the ring to 16 (with some exceptions) but this was not always the case.
 
-## Minimum Amount Of Decoys
+## Default Minimum Decoys
 
 This is the number of decoys an input must at least have.
 
@@ -39,7 +39,7 @@ minimum amount of decoys needed.
 A ringCT input, aka an output with 0 amount, is always considered mixable[^0-amt-mixable].
 
 For other inputs you first get the amount of outputs on chain with that amount and check if thats less than or equal
-to the [minimum amount of decoys](#minimum-amount-of-decoys) if it is then the input is un-mixable otherwise it is
+to the [default minimum amount of decoys](#default-minimum-decoys) if it is then the input is un-mixable otherwise it is
 mixable[^check-mixability].
 
 ---
