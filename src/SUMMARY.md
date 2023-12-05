@@ -15,3 +15,4 @@
     - [Decoys](./consensus_rules/transactions/decoys.md)
     - [Version 1](./consensus_rules/transactions/pre_rct.md)
     - [Version 2](./consensus_rules/transactions/rct.md)
+- [Pruning](./pruning.md)
