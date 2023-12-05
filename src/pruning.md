@@ -1,6 +1,6 @@
 # Pruning
 
-Monero pruning works by having 8 possible pruning seed, the seed chosen will decide what part of the blockchains signing data your node will keep. Each pruned peer generates their pruning seed randomly.
+Monero pruning works by having 8 possible pruning seeds, the seed chosen will decide what part of the blockchains signing data your node will keep. Each pruned peer generates their pruning seed randomly.
 
 ## Stripes
 
@@ -66,11 +66,11 @@ constexpr inline uint32_t get_pruning_log_stripes(uint32_t pruning_seed) {
 }
 ```
 
-This only return 3 for all currently valid Monero seeds.
+This will only return 3 for all currently valid Monero seeds.
 
 ## Getting A Seeds Pruning Stripe
 
-The seed's pruning stripe corresponds, as explain earlier, to the range of blocks we keep. This is the function that give the stripe with the pruning seed in Monero:
+The seed's pruning stripe corresponds, as explain earlier, to the range of blocks we keep. This is the function that gets the stripe from the pruning seed:
 
 ```c++
 inline uint32_t get_pruning_stripe(uint32_t pruning_seed) { 
@@ -223,18 +223,19 @@ This calculates how many cycles of this table we have done:
 
 If we think about what this is doing, this makes sense:
 
-## \\(\frac{block height}{CRYPTONOTE PRUNING STRIPE SIZE} * \frac{1}{2^{log stripes}} \\)
+## \\(cycles = \frac{block height}{CRYPTONOTE PRUNING STRIPE SIZE} * \frac{1}{2^{log stripes}} \\)
 
-for normal Monero pruning this equals:
+for normal Monero pruning this is the same as:
 
-## \\(\frac{block height}{4096 * 2^{3}} = \frac{block height}{32768}\\)
+## \\(cycles = \frac{block height}{4096 * 2^{3}} = \frac{block height}{32768}\\)
 
 ```c++
 const uint64_t cycle_start = cycles + ((stripe > block_pruning_stripe) ? 0 : 1);
 ```
 
 This checks if we are a past our seeds stripe in a cycle and if we are past it we add
-one to the number of cycles to get `cycles_start`
+one to the number of cycles to get `cycles_start` which is the start of the cycle our
+stripe will next be storing blocks in.
 
 ```c++
 const uint64_t h = cycle_start * (CRYPTONOTE_PRUNING_STRIPE_SIZE << log_stripes) + (stripe - 1) * CRYPTONOTE_PRUNING_STRIPE_SIZE;
