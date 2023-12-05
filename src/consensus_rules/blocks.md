@@ -29,7 +29,7 @@ There must be no duplicate transactions in the block or the blockchain[^no-dupli
 
 ### Key Images
 
-There must be no duplicate key images in the block[^no-duplicate-ki].
+There must be no duplicate key images in the block[^no-duplicate-ki], or the whole chain.
 
 ### Previous ID
 
