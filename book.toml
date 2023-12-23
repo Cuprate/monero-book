@@ -10,3 +10,6 @@ create-missing = false
 
 [output.html]
 mathjax-support = true
+additional-css = ["svgbob.css"]
+
+[preprocessor.svgbob]

@@ -8,7 +8,6 @@ This chapter does not include miner, coinbase, transactions as they are handled 
 
 1. [Rules That Apply To All Versions](./transactions.md#rules-that-apply-to-all-versions)
 2. [Rules Specific to Version 1](./transactions/pre_rct.md)
-3. [Rules Specific to Version 2](./transactions/rct.md)
 
 ## Rules That Apply To All Versions
 

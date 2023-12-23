@@ -1,6 +1,6 @@
 # Transaction Version 1 Rules
 
-## Intro
+## Introduction
 
 These rules apply only to version 1, pre-ringCT, transactions.
 

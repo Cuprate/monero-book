@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: 0.4.35
-##      MDBOOK_SVGBOB_VERSION: 0.2.1
+      MDBOOK_SVGBOB_VERSION: 0.2.1
     steps:
       - uses: actions/checkout@v4
       - name: Install mdBook
         run:  cargo install --version ${MDBOOK_VERSION} mdbook
- ##         cargo install --version ${MDBOOK_SVGBOB_VERSION} mdbook-svgbob
+              cargo install --version ${MDBOOK_SVGBOB_VERSION} mdbook-svgbob
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3

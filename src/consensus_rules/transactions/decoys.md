@@ -1,5 +1,7 @@
 # Decoys
 
+## Introduction
+
 Every non-miner transaction input must specify a `ring` of past outputs of which one is the true spend. Currently Monero restricts
 the size of the ring to 16 (with some exceptions) but this was not always the case.
 
