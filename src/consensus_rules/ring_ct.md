@@ -22,8 +22,8 @@ Data needed so the receiver can recover the amount they have received.
 2. [Simple Types Rules](#simple-types-rules)
 3. [MLSAG Rules](./ring_ct/mlsag.md)
 4. [Borromean Rules](./ring_ct/borromean.md)
-4. [Bulletproofs Rules](./ring_ct/bulletproofs.md)
-4. [Bulletproofs+ Rules](./ring_ct/bulletproofs+.md)
+5. [Bulletproofs Rules](./ring_ct/bulletproofs.md)
+6. [Bulletproofs+ Rules](./ring_ct/bulletproofs+.md)
 
 ## Rules That Apply To All Types
 
@@ -40,10 +40,10 @@ RingCT type define the proofs used in the transaction, the ringCT types allowed 
 | 4 (Bulletproof2) | Uses the same signatures as type 3                                    | 10 [^bulletproof2-activated-bulletproof-disallowed]        | 14 (except 2 transactions) [^clsag-activated-bulletproof2-disallowed] |
 | 5 (CLSAG)        | CLSAG signatures per input with a single bulletproof for all outputs  | 13 [^clsag-activated-bulletproof2-disallowed]              | 16 [^bulletproof+-activated-clsag-disallowed]                         |
 | 6 (Bulletproof+) | CLSAG signatures per input with a single bulletproof+ for all outputs | 15 [^bulletproof+-activated-clsag-disallowed]              | Still allowed                                                         |
-| 6+               | Future type not currently allowed                                     | Not allowed [^future-rct-types]                                               | Not allowed                                                           |
+| 6+               | Future type not currently allowed                                     | Not allowed [^future-rct-types]                            | Not allowed                                                           |
 
-There are 2 type 4 RCT transactions that are allowed after hard-fork 13, this was due to a bug in which transactions added to the txpool before a fork 
-were not being checked for new fork rules they are: 
+There are 2 type 4 RCT transactions that are allowed after hard-fork 13, this was due to a bug in which transactions added to the txpool before a fork
+were not being checked for new fork rules they are:
 `c5151944f0583097ba0c88cd0f43e7fabb3881278aa2f73b3b0a007c5d34e910` and `6f2f117cde6fbcf8d4a6ef8974fcac744726574ac38cf25d3322c996b21edd4c`[^grandfathered-txs].
 
 ### OutPKs Valid Points
@@ -56,7 +56,7 @@ All outputs must have an amount of 0.[zero-amount-outputs]
 
 ---
 
-## Simple Types Rules 
+## Simple Types Rules
 
 These rules apply to all RCT "simple" types, which are all except type "FULL".
 
@@ -91,7 +91,7 @@ got activated
 
 [zero-amount-outputs]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/blockchain.cpp#L3059>
 
-[^outPKs-valid-points]: For simple types: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L1444>, 
+[^outPKs-valid-points]: For simple types: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L1444>,
 For type FULL: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L829-L829>
 
 [^pseudo-outs-valid-points]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L1449>

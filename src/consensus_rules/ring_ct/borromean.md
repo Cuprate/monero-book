@@ -16,8 +16,8 @@ For a range proof at a certain index the sum of each Ci must equal the outPK at 
 
 ### Borromean Scalar Encoding
 
-Monero does not check that the scalars `s0` and `s1` are reduced this leads to them, if not reduced, being interpreted as a different scalar by the `slide` function 
-which calculates the 5-NAF of the number. The `slide` function restricts it's output to 256 bytes however if the last bit is set on the input this could lead to the 
+Monero does not check that the scalars `s0` and `s1` are reduced this leads to them, if not reduced, being interpreted as a different scalar by the `slide` function
+which calculates the 5-NAF of the number. The `slide` function restricts it's output to 256 bytes however if the last bit is set on the input this could lead to the
 5-NAF of the scalar being 257 bytes long. There are scalars on the chain which have this behavior.[^scalar-report]
 
 The scalar `ee` must be a fully reduced scalar as it is compared against the raw bytes of an output from the `hash_to_scalar` function.[^s0-s1-ee-encoding]
@@ -25,7 +25,7 @@ The scalar `ee` must be a fully reduced scalar as it is compared against the raw
 ### The Borromean Ring Must Be Valid
 
 To verify a Borromean ring signature is valid you must first set up the public keys that the ring will be verified with, one member of the ring will be a Ci the
-other will be (\\(Ci - H * 2^X \\)), where X is the index of the Ci. By setting up the ring like this the prover will only know the discreet log of a 
+other will be (\\(Ci - H * 2^X \\)), where X is the index of the Ci. By setting up the ring like this the prover will only know the discreet log of a
 ring member if either the Ci is a commitment to 0 or \\(2^X\\)[^public-key-setup].
 
 After setting up the public keys the actual borromean rings must be valid.[^ring-valid]

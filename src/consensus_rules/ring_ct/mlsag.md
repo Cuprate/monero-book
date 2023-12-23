@@ -2,7 +2,7 @@
 
 ## Introduction
 
-These rules are split into 3 sections: Full, Simple and Both. Full is for RCT type Full and Simple are for the other RCT types 
+These rules are split into 3 sections: Full, Simple and Both. Full is for RCT type Full and Simple are for the other RCT types
 that use MLSAG signatures.
 
 > Simple is not just for RCT type Simple!
@@ -18,21 +18,20 @@ that use MLSAG signatures.
 
 For RCT type full the ring matrix contains every inputs ring members: [^full-matrix]
 
-(The signer owns a whole column)        
+(The signer owns a whole column)
 
 ```bob
-
-          .-------.-------.-------.- - - -.     
-          | I1 R1 | I1 R2 | I1 R3 | ..... |  
-          | I2 R1 | I2 R2 | I2 R3 | ..... |    
-          | I3 R1 | I3 R2 | I3 R3 | ..... |
-            .....   .....   .....   .....  
-          |   A   |   A   |   A   | ..... | <-.
-          '-------'-------'-------'-------'   |              
-                                              |  
- I = Input                                    |
- R = Ring member                              |
- A = Pedersen Commitment                      | 
+         .-------.-------.-------.- - - -.     
+         | I1 R1 | I1 R2 | I1 R3 | ..... |  
+         | I2 R1 | I2 R2 | I2 R3 | ..... |    
+         | I3 R1 | I3 R2 | I3 R3 | ..... |
+           .....   .....   .....   .....  
+         |   A   |   A   |   A   | ..... | <-.
+         '-------'-------'-------'-------'   |              
+                                             |  
+I = Input                                    |
+R = Ring member                              |
+A = Pedersen Commitment                      |
 ```
 
 The last row contains: \\(\sum CommitmentsAtIndex - \sum outPK - fee * H \\) [^full-last-row]
@@ -55,15 +54,14 @@ There must be the same amount of ring members in each inputs ring.[^full-numb-ri
 For simple RCT types the ring matrix only contains the ring members of a single input: [^simple-matrix]
 
 ```bob
-
-          .-------.-------.-------.- - - -.     
-          | IX R1 | IX R2 | IX R3 | ..... |     
-          |   A   |   A   |   A   | ..... | <-.
-          '-------'-------'-------'- - - -'   |             
-                                              |  
- I = Input                                    |
- R = Ring member                              |
- A = Pedersen Commitment                      | 
+         .-------.-------.-------.- - - -.     
+         | IX R1 | IX R2 | IX R3 | ..... |     
+         |   A   |   A   |   A   | ..... | <-.
+         '-------'-------'-------'- - - -'   |             
+                                             |  
+I = Input                                    |
+R = Ring member                              |
+A = Pedersen Commitment                      |
 ```
 
 The last row contains the ring members commitment minus the pseudo-out for this input.[^simple-last-row]
@@ -76,11 +74,11 @@ There must be more than one ring member.[^more-than-one-ring-member]
 
 ### SS Size
 
-The ss field must be the same length as the key matrix[^ss-size] and each ss member lengths must be the same as the matrix's rows. [^ss-member-size] 
+The ss field must be the same length as the key matrix[^ss-size] and each ss member lengths must be the same as the matrix's rows. [^ss-member-size]
 
 ### SS, CC Canonical Encoding
 
-Every ss element and cc must be fully reduced scalars.[^ss-cc-reduced] 
+Every ss element and cc must be fully reduced scalars.[^ss-cc-reduced]
 
 ### Key Images Not Identity
 

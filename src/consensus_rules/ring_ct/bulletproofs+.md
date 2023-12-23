@@ -8,7 +8,7 @@ These rules apply to all ringCT types that use bulletproofs+.
 
 ### L & R Length
 
-The Length of the L & R fields must be the same, they must both be greater than or equal to 6 and less than or equal to \\( 6 + log_2(maxOutputs) \\), 
+The Length of the L & R fields must be the same, they must both be greater than or equal to 6 and less than or equal to \\( 6 + log_2(maxOutputs) \\),
 maxOutputs being 16.[^L-R-Size]
 
 ### Number Of Bulletproofs
@@ -21,7 +21,7 @@ The amount of outputs in the transaction must not be more than \\(2^{(len(L) - 6
 
 ### Canonical Encoding
 
-`r1`, `s2`, `d1` must all be canonically encoded, reduced, scalars.[^scalars-reduced] All the points of `V`, `L` and `R` must be canonically encoded and `A1`, `B` and 
+`r1`, `s2`, `d1` must all be canonically encoded, reduced, scalars.[^scalars-reduced] All the points of `V`, `L` and `R` must be canonically encoded and `A1`, `B` and
 `A` must canonically encoded points.[^canonical-points]
 
 ### At Least One Output
@@ -30,8 +30,7 @@ There must be at least one element of V, which is constructed from the outPKs wh
 
 ### The Bulletproof Must Be Valid
 
-The bulletproof must pass verification. [^bulletproof+-valid] 
----
+## The bulletproof must pass verification. [^bulletproof+-valid]
 
 [^L-R-Size]: <https://github.com/monero-project/monero/blob/master/src/ringct/rctTypes.cpp#L300-L304>
 

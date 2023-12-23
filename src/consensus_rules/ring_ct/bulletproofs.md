@@ -8,7 +8,7 @@ These rules apply to all ringCT types that use bulletproofs.
 
 ### L & R Length
 
-The Length of the L & R fields must be the same, they must both be greater than or equal to 6 and less than or equal to \\( 6 + log_2(maxOutputs) \\), 
+The Length of the L & R fields must be the same, they must both be greater than or equal to 6 and less than or equal to \\( 6 + log_2(maxOutputs) \\),
 maxOutputs being 16.[^L-R-Size]
 
 ### Number Of Bulletproofs
@@ -31,7 +31,7 @@ All the elements of `V`, `L`, `R` and `A`, `T1`, `T2` and `S` must all be valid,
 
 ### The Bulletproof Must Be Valid
 
-The bulletproof must pass verification. [^bulletproof-valid] 
+The bulletproof must pass verification. [^bulletproof-valid]
 
 ---
 
