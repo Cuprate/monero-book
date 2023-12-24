@@ -13,9 +13,6 @@ A pedersen commitment to the output amount.
 Pseudo-outs:
 A pedersen commitment to the true spends amount with a different mask, such that the sum of the pseudo-outs is the same as the sum of the outPKs + fee * H.
 
-ecdhInfo:
-Data needed so the receiver can recover the amount they have received.
-
 ## Index
 
 1. [Rules That Apply To All Types](#rules-that-apply-to-all-types)
@@ -23,7 +20,8 @@ Data needed so the receiver can recover the amount they have received.
 3. [MLSAG Rules](./ring_ct/mlsag.md)
 4. [Borromean Rules](./ring_ct/borromean.md)
 5. [Bulletproofs Rules](./ring_ct/bulletproofs.md)
-6. [Bulletproofs+ Rules](./ring_ct/bulletproofs+.md)
+6. [CLSAG Rules](./ring_ct/clsag.md)
+7. [Bulletproofs+ Rules](./ring_ct/bulletproofs+.md)
 
 ## Rules That Apply To All Types
 

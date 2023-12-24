@@ -30,7 +30,7 @@ There must be at least one element of V, which is constructed from the outPKs wh
 
 ### The Bulletproof Must Be Valid
 
-## The bulletproof must pass verification. [^bulletproof+-valid]
+The bulletproof must pass verification. [^bulletproof+-valid]
 
 [^L-R-Size]: <https://github.com/monero-project/monero/blob/master/src/ringct/rctTypes.cpp#L300-L304>
 

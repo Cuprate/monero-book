@@ -111,6 +111,10 @@ The outputs unlock time must have passed, see the [chapter on unlock time](./tra
 
 From hard-fork 12 all ring members must be at least 10 blocks old[^minimum-out-age].
 
+### 2 Outputs
+
+From hard-fork 12 version 2 transactions must have 2 outputs[^minimum-2-outs].
+
 ---
 
 [^tx-v0]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/tx_pool.cpp#L152>
@@ -155,3 +159,5 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 [^output-must-exist]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3995>
 
 [^minimum-out-age]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3533>
+
+[^minimum-2-outs]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/blockchain.cpp#L3324>

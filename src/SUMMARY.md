@@ -18,5 +18,6 @@
       - [MLSAG](./consensus_rules/ring_ct/mlsag.md)
       - [Borromean](./consensus_rules/ring_ct/borromean.md)
       - [Bulletproofs](./consensus_rules/ring_ct/bulletproofs.md)
+      - [CLSAG](./consensus_rules/ring_ct/clsag.md)
       - [Bulletproofs+](./consensus_rules/ring_ct/bulletproofs+.md)
 - [Pruning](./pruning.md)
