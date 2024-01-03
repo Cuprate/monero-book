@@ -10,10 +10,6 @@ These rules apply only to version 1, pre-ringCT, transactions.
 
 Transactions must have a higher amount in than out[^more-in-than-out], the fee is defined as the inputs - outputs.
 
-### Inputs And Outputs Must Not Overflow
-
-The inputs when summed must not overflow a u64 and the outputs when summed must no either[^amount-overflow].
-
 ### Output Amount
 
 All outputs must have an amount bigger than 0[^zero-output].
@@ -43,8 +39,6 @@ The ring signature must be correctly formed[^ring-sig-correct].
 ---
 
 [^more-in-than-out]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/cryptonote_core.cpp#L1163> and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/tx_pool.cpp#L190-L204>
-
-[^amount-overflow]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L871>
 
 [^zero-output]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L862>
 

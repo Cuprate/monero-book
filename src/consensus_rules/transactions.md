@@ -39,6 +39,10 @@ All inputs must have decoys[^empty-decoys].
 
 All inputs must be of type `txin_to_key`[^input-types].
 
+### Inputs And Outputs Must Not Overflow
+
+The inputs when summed must not overflow a u64 and the outputs when summed must not either[^amount-overflow].
+
 ### Output Keys Canonical
 
 All output public keys must be `canonical points`[^output-key-canonical].
@@ -97,7 +101,7 @@ From hard-fork 12 all inputs must have the same number of decoys[^equal-decoys].
 
 ### Sorted Inputs
 
-From hard-fork 7 the inputs must be sorted by key image, in ascending lexicographic order[^sorted-kis].
+From hard-fork 7 the inputs must be sorted by key image, in descending lexicographic order[^sorted-kis].
 
 ### The Output Must Exist
 
@@ -133,6 +137,8 @@ and <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd4
 [^empty-decoys]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3473>
 
 [^input-types]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L844>
+
+[^amount-overflow]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L871>
 
 [^output-key-canonical]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L865>
 
