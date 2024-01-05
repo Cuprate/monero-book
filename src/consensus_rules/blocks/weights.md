@@ -2,7 +2,7 @@
 
 Monero's blockchain, unlike other blockchains, has dynamic block sizes which means blocks expand to handle demand.
 However Monero does not allow unrestricted block growth, miners will face a penalty for expanding blocks and miners
-are restricted by how much the can expand a block.
+are restricted by how much they can expand a block.
 
 ## Index
 

@@ -25,7 +25,7 @@ the chain.
 
 The timestamps are then sorted, in ascending order. We now need to get a time span value to do this we first remove the outliers:
 
-If the number of timestamps is less than or equal to the amount of blocks we are accounting for (600 OR 720 - 2 * 60) then the lower
+If the number of timestamps is less than or equal to the amount of blocks we are accounting for (600: 720 - 2 * 60) then the lower
 is set to 0 and the upper is set to the length of timestamps. Otherwise, if we have enough timestamps, the lower and upper is calculated
 by[^calculating-lower-upper]:
 

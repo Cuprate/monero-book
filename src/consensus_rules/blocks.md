@@ -2,13 +2,16 @@
 
 ## Introduction
 
-This chapter contains all the rules that apply to a block, miner transactions are included in this section as the rules that apply to them
+This chapter contains all the rules that apply to a block. Miner transactions are included in this section as the rules that apply to them
 are different to normal transactions.
 
 ## Index
 
 1. [Block Rules](./blocks.md#block-rules)
-2. [Miner Transaction](./blocks/miner_tx.md)
+2. [Difficulty](./blocks/difficulty.md)
+3. [Weights](./blocks/weights.md)
+4. [Block Reward](./blocks/reward.md)
+5. [Miner Transaction](./blocks/miner_tx.md)
 
 ## Block Rules
 
@@ -21,7 +24,7 @@ The [block weight](./blocks/weights.md#block-weights) must not be more than 2 *
 
 ### Amount Of Transactions
 
-The amount of transactions in a block (including miner transaction) must be less than `0x10000000`[^max-amount-of-txs].
+The amount of transactions in a block (including the miner transaction) must be less than `0x10000000`[^max-amount-of-txs].
 
 ### No Duplicate Transactions
 
