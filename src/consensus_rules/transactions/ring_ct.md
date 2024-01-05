@@ -17,8 +17,8 @@ A pedersen commitment to the true spends amount with a different mask, such that
 
 1. [Rules That Apply To All Types](#rules-that-apply-to-all-types)
 2. [Simple Types Rules](#simple-types-rules)
-3. [MLSAG Rules](./ring_ct/mlsag.md)
-4. [Borromean Rules](./ring_ct/borromean.md)
+3. [Borromean Rules](./ring_ct/borromean.md)
+4. [MLSAG Rules](./ring_ct/mlsag.md)
 5. [Bulletproofs Rules](./ring_ct/bulletproofs.md)
 6. [CLSAG Rules](./ring_ct/clsag.md)
 7. [Bulletproofs+ Rules](./ring_ct/bulletproofs+.md)
@@ -44,15 +44,12 @@ There are 2 type 4 RCT transactions that are allowed after hard-fork 13, this wa
 were not being checked for new fork rules they are:
 `c5151944f0583097ba0c88cd0f43e7fabb3881278aa2f73b3b0a007c5d34e910` and `6f2f117cde6fbcf8d4a6ef8974fcac744726574ac38cf25d3322c996b21edd4c`[^grandfathered-txs].
 
-### OutPKs Valid Points
-
-All outPKs must be valid points[^outPKs-valid-points].
+### OutPKs Valid Points<details>
+<summary>Simple Types Rules</summary>
 
 ### Output Amount
 
 All outputs must have an amount of 0.[zero-amount-outputs]
-
----
 
 ## Simple Types Rules
 

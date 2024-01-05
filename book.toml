@@ -12,4 +12,8 @@ create-missing = false
 mathjax-support = true
 additional-css = ["svgbob.css"]
 
+[output.html.fold]
+enable = true
+level = 2
+
 [preprocessor.svgbob]

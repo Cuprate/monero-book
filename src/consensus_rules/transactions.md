@@ -7,7 +7,7 @@ This chapter does not include miner, coinbase, transactions as they are handled 
 ## Index
 
 1. [Rules That Apply To All Versions](./transactions.md#rules-that-apply-to-all-versions)
-2. [Rules Specific to Version 1](./transactions/pre_rct.md)
+2. [Rules Specific to Version 1](./transactions/ring_signatures.md)
 
 ## Rules That Apply To All Versions
 
