@@ -47,6 +47,10 @@ which is not good for privacy.
 
 There must be the same amount of ring members in each inputs ring.[^full-numb-ring-members]
 
+### One MLSAGs
+
+There must be only one MLSAG signature.[^numb-mlsags]
+
 ## Simple Rules
 
 ### Creating The Ring Matrix (Simple)
@@ -65,6 +69,10 @@ A = Pedersen Commitment                      |
 ```
 
 The last row contains the ring members commitment minus the pseudo-out for this input.[^simple-last-row]
+
+### Simple Number Of MLSAGs
+
+There must be the same amount of MLSAG signatures as there are inputs.[^numb-mlsags]
 
 ## Rules That Apply To Both
 
@@ -95,6 +103,8 @@ The signature must be valid.[^mlsag-valid]
 [^full-last-row]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L827-L833>
 
 [^full-numb-ring-members]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L810>
+
+[^numb-mlsags]: <https://github.com/monero-project/monero/blame/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctTypes.h#L537-L540C28>s
 
 [^simple-matrix]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L841>
 

@@ -6,6 +6,10 @@ These rules apply to all ringCT types that use Borromean ring signatures to prov
 
 ## Rules
 
+### Number Of Borromean Range Proofs
+
+The amount of Borromean range proofs must be the same as the number of outputs.[^numb-borro]
+
 ### Ci Valid Points
 
 Each Ci (bit commitment) must be valid points.[^ci-valid-points]
@@ -31,6 +35,8 @@ ring member if either the Ci is a commitment to 0 or \\(2^X\\)[^public-key-setup
 After setting up the public keys the actual borromean rings must be valid.[^ring-valid]
 
 ---
+
+[^numb-borro]: <https://github.com/monero-project/monero/blame/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctTypes.h#L480>
 
 [^ci-valid-points]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L581>
 

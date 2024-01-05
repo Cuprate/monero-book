@@ -6,6 +6,10 @@ These rules apply to all ringCT types that use CLSAG signatures.
 
 ## Rules
 
+### Number Of CLSAGs
+
+There must be the same number of CLSAG signatures as there are inputs.[^numb-clsags]
+
 ### `s` Size
 
 The `s` field must have has many elements as the amount of ring members.[^s-size]
@@ -23,6 +27,8 @@ The key image and 8 * `D`, the commitment key image, must both not be the identi
 The signature must be valid.[^clsag-valid]
 
 ---
+
+[^numb-clsags]: <https://github.com/monero-project/monero/blame/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctTypes.h#L496>
 
 [^s-size]: <https://github.com/monero-project/monero/blame/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L880>
 
