@@ -58,6 +58,18 @@ The proof of work function used depends on the hard-fork[^pow-func]:
 
 See [checking POW in the difficulty chapter](./blocks/difficulty.md#checking-a-blocks-proof-of-work).
 
+### RandomX Seed
+
+The RandomX seed, which is used to set up the dataset, is a previous block hash in the blockchain.
+
+The seed height is 0 if the current height is below or equal to \\( 2048 + 64 \\) otherwise is got by:
+
+\\( seedHeight = (height - 64 - 1) \land \lnot(2048 - 1) \\)
+
+with \\( \land \\) being a bit-and and \\( \lnot \\) being a bit-not.
+
+You then get the block hash at `seedHeight` which is then the RandomX seed.[^rx-seed]
+
 ### Version And Vote
 
 The blocks major version must equal the current hard-fork and the vote must be equal to or greater than the current hard-fork[^version-vote].
@@ -86,6 +98,8 @@ the median timestamp over the last 60 blocks[^timestamp-lower-limit], if there a
 [^pow-func]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/cryptonote_tx_utils.cpp#L689-L704>
 
 [^202612-pow-hash]: <https://github.com/monero-project/monero/blob/67d190ce7c33602b6a3b804f633ee1ddb7fbb4a1/src/cryptonote_core/cryptonote_tx_utils.cpp#L683>
+
+[^rx-seed]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/crypto/rx-slow-hash.c#L179-L186>
 
 [^version-vote]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/hardfork.cpp#L109>
 
