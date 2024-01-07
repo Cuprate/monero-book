@@ -48,10 +48,6 @@ were not being checked for new fork rules they are:
 
 All outPKs must be valid points[^outPKs-valid-points].
 
-### Output Amount
-
-All outputs must have an amount of 0.[zero-amount-outputs]
-
 ## Simple Types Rules
 
 These rules apply to all RCT "simple" types, which are all except type "FULL".
@@ -84,8 +80,6 @@ got activated
 [^future-rct-types]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctTypes.h#L335>
 
 [^grandfathered-txs]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/blockchain.cpp#L3150>
-
-[zero-amount-outputs]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/blockchain.cpp#L3059>
 
 [^outPKs-valid-points]: For simple types: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L1444>,
 For type FULL: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctSigs.cpp#L829-L829>
