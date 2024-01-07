@@ -18,7 +18,7 @@ inputs and the outputs is then the fee.[^more-in-than-out] The amount of each ou
 From hard-fork 2 version 1 transaction output amounts also must be validly decomposed[^decomposed-amounts].
 A valid decomposed amount is an amount contained in [this table](https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L52)
 
-For version 2 txs all outputs must have a zero amount.[v2-output-amount]
+For version 2 txs all outputs must have a zero amount.[^v2-output-amount]
 
 ### Output Keys Canonical
 
@@ -53,7 +53,7 @@ From hard-fork 12 version (RCT) 2 transactions must have 2 outputs[^minimum-2-ou
 
 [^decomposed-amounts]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_core/blockchain.cpp#L3048>
 
-[v2-output-amount]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/blockchain.cpp#L3059>
+[^v2-output-amount]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/blockchain.cpp#L3059>
 
 [^output-key-canonical]: <https://github.com/monero-project/monero/blob/eac1b86bb2818ac552457380c9dd421fb8935e5b/src/cryptonote_basic/cryptonote_format_utils.cpp#L865>
 
