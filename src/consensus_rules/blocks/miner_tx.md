@@ -10,7 +10,7 @@ Miner transactions are handled differently to normal transactions, see [here](..
 
 The transactions version must be either 1 or 2[^versions-allowed].
 
-The version must be bigger than 1 or the current hard-fork must be less than 12[^weird-version-rules].
+The version can be 1 or 2 up to hard-fork 12 then it must be 2[^weird-version-rules].
 
 ### Input
 
@@ -52,13 +52,10 @@ The output type allowed depends on the hard-fork[^output-types]:
 
 > For hard-fork 15 both are allowed but the transactions outputs must all be the same type.
 
-<div class="hidden">
-
 ### Zero Amount V1 Output
 
-Monero does **not** ban zero amount V1 outputs on miner transactions but the database throws an error if a 0 amount output doesn't have a commitment[^zero-output].
-
-</div>
+Monero does not explicitly ban zero amount V1 outputs on miner transactions but the database throws an error if a 0 amount output doesn't have a commitment
+[^zero-output] meaning they are baned.
 
 ### V2 Output Pool
 
