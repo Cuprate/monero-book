@@ -12,7 +12,7 @@ The amount of Borromean range proofs must be the same as the number of outputs.[
 
 ### Ci Valid Points
 
-Each Ci (bit commitment) must be valid points.[^ci-valid-points]
+Each Ci (bit commitment) must be canonically encoded points.[^ci-valid-points]
 
 ### Sum Ci
 

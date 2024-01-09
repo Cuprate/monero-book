@@ -12,7 +12,7 @@ The and the outputs when summed must not overflow a u64[^amount-overflow].
 
 ### Output Amount
 
-For version 1 txs the total amount of the outputs must be less than the total inputs, the difference between the
+For version 1 txs sum of the outputs must be less than the sum of the inputs, the difference between the
 inputs and the outputs is then the fee.[^more-in-than-out] The amount of each outputs must also not be zero.[^zero-output]
 
 From hard-fork 2 version 1 transaction output amounts also must be validly decomposed[^decomposed-amounts].

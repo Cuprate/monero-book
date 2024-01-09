@@ -8,8 +8,13 @@ These rules apply to all ringCT types that use bulletproofs+.
 
 ### L & R Length
 
-The Length of the L & R fields must be the same, they must both be greater than or equal to 6 and less than or equal to \\( 6 + log_2(maxOutputs) \\),
-maxOutputs being 16.[^L-R-Size]
+The Length of the L & R fields must be the same, they must both be equal to \\( 6 + log_2(firstPower2AboveNumbOuts) \\).[^L-R-Size]
+
+Where `firstPower2AboveNumbOuts` is the first power of 2 above or equal to the amount of outputs in the transaction, so:
+
+If outputs = 3, firstPower2AboveNumbOuts = 4.
+
+If outputs = 8, firstPower2AboveNumbOuts = 8.
 
 ### Number Of Bulletproofs
 
@@ -17,7 +22,7 @@ There must only be one bulletproof in a transaction.[^one-bulletproof+]
 
 ### Max Outputs
 
-The amount of outputs in the transaction must not be more than \\(2^{(len(L) - 6)} \\) and 2 * NumbOutputs must be more than \\(2^{(len(L) - 6)}\\) [^max-outputs]
+The amount of outputs in the transaction must not be more than 16 [^max-outputs]
 
 ### Canonical Encoding
 
@@ -32,11 +37,11 @@ There must be at least one element of V, which is constructed from the outPKs wh
 
 The bulletproof must pass verification. [^bulletproof+-valid]
 
-[^L-R-Size]: <https://github.com/monero-project/monero/blob/master/src/ringct/rctTypes.cpp#L300-L304>
+[^L-R-Size]: <https://github.com/monero-project/monero/blob/master/src/ringct/rctTypes.cpp#L300-L304> && <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/bulletproofs_plus.cc#L850>
 
 [^one-bulletproof+]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_basic/cryptonote_format_utils.cpp#L173>
 
-[^max-outputs]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/rctTypes.cpp#L261-L262>
+[^max-outputs]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/cryptonote_core/cryptonote_core.cpp#L887>
 
 [^scalars-reduced]: <https://github.com/monero-project/monero/blob/ac02af92867590ca80b2779a7bbeafa99ff94dcb/src/ringct/bulletproofs_plus.cc#L825-L827>
 
