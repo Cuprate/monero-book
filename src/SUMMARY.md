@@ -23,4 +23,5 @@
       - [Bulletproofs+](./consensus_rules/transactions/ring_ct/bulletproofs+.md)
 - [P2P Network](./p2p_network.md)
   - [Levin Protocol](./p2p_network/levin.md)
+  - [P2P Messages](./p2p_network/messages.md)
 - [Pruning](./pruning.md)
