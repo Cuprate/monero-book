@@ -31,7 +31,7 @@ Support flags specify any protocol extensions the peer supports, currently only 
 
 levin command: 1001
 
-| Fields      | Type (Epee Type)                             | Description    |
-| ----------- | -------------------------------------------- | --- |
-| `node_data` | [basic node data](#basic-node-data) (Object) |     |
-|             |                                              |     |
+| Fields      | Type (Epee Type)                             | Description |
+| ----------- | -------------------------------------------- | ----------- |
+| `node_data` | [basic node data](#basic-node-data) (Object) |             |
+|             |                                              |             |
