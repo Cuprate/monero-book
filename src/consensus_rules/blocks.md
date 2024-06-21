@@ -72,7 +72,7 @@ You then get the block hash at `seedHeight` which is then the RandomX seed.[^rx-
 
 ### Version And Vote
 
-The blocks major version must equal the current hard-fork and the vote must be equal to or greater than the current hard-fork[^version-vote].
+The blocks major version must equal to the current hard-fork and the vote must be greater than or equal to the current hard-fork[^version-vote].
 
 > Vote is not always the same as the minor version, see [here](./hardforks.md#blocks-version-and-vote).
 
